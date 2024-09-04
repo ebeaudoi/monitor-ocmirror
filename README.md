@@ -25,4 +25,6 @@ The `monitor-ocmirror` script is designed to run the `oc-mirror` command and res
    MAXLOOP=20
 
 3. **Run the script**
-   ./monitor-ocmirror.sh
+
+   ```bash
+  ./monitor-ocmirror.sh
