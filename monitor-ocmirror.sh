@@ -10,7 +10,15 @@ LOGFILE="/home/admin/ocmirror/ocmirror-logs/script-download-redhat-v416-mirrorto
 # The oc-mirror command
 LAUNCH="oc mirror --verbose 3 --config=script-redhat-op-v4.16-config-v1.yaml file://disk-script"
 LOOPCOUNT=0;
-MAXLOOP=1;
+MAXLOOP=20;
+echo "--------------------------------"
+echo "Starting the mirroring"
+echo "Logs file:"
+echo "$LOGFILE"
+echo ""
+echo "Command:"
+echo "$LAUNCH"
+echo ""
 while :
 do
     echo "New launch at `date`" >> "${LOGFILE}"
@@ -39,7 +47,7 @@ do
       exit 5
     else
       ((LOOPCOUNT++))
-      echo "Restarting the oc mirror command"
+      echo "Restarting the oc mirror command - $LOOPCOUNT/$MAXLOOP"
       echo "--------------------------------"
       echo "$LASTTENLINE"
       echo "--------------------------------"
