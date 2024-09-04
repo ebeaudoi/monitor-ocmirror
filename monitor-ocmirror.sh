@@ -30,6 +30,11 @@ do
       echo "The mirroring has succeeded"
       echo "look at the logs ${LOGFILE}"
       exit;
+    elif [[ $LASTTENLINE == *"No updates detected, process stopping"* ]]
+    then
+      echo "No updates detected, process stopping"
+      echo "look at the logs ${LOGFILE}"
+      exit;
     elif [[ $LASTTENLINE == *"manifest unknown"* ]]
     then
       echo "The mirroring has stopped - MANIFEST ERROR"
@@ -51,9 +56,9 @@ do
       echo "--------------------------------"
       echo "$LASTTENLINE"
       echo "--------------------------------"
-      echo "----------------------------------------------" >> "${LOGFILE}"
-      echo "Monitor script stopped/restarted the mirroring" >> "${LOGFILE}"
-      echo "----------------------------------------------" >> "${LOGFILE}"
+      echo "--------------------------------------------------------------" >> "${LOGFILE}"
+      echo "Monitor script stopped/restarted the mirroring - $LOOPCOUNT/$MAXLOOP" >> "${LOGFILE}"
+      echo "--------------------------------------------------------------" >> "${LOGFILE}"
       continue
     fi
 done
