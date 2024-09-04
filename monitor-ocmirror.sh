@@ -53,6 +53,7 @@ do
     else
       ((LOOPCOUNT++))
       echo "Restarting the oc mirror command - $LOOPCOUNT/$MAXLOOP"
+      echo "$(date)"
       echo "--------------------------------"
       echo "$LASTTENLINE"
       echo "--------------------------------"
