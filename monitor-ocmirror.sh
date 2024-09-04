@@ -9,7 +9,7 @@
 LOGFILE="/home/admin/ocmirror/ocmirror-logs/script-download-redhat-v416-mirrortodisk-v1-$(date +%Y%m%d-%HH%M).log"
 # The oc-mirror command
 LAUNCH="oc mirror --verbose 3 --config=script-redhat-op-v4.16-config-v1.yaml file://disk-script"
-
+LOOPCOUNT=0;
 while :
 do
     echo "New launch at `date`" >> "${LOGFILE}"
@@ -31,7 +31,13 @@ do
       echo "The mirroring has stopped - ERROR RENDERING"
       echo "look at the logs ${LOGFILE}"
       exit 4
+    elif [[ $LOOPCOUNT gt 1 ]]
+      echo "The mirroring has stopped - ERROR LOOP more than 20 times"
+      echo "look at the logs ${LOGFILE}"
+      exit 5
+    then
     else
+      ((LOOPCOUNT++))
       echo "Restarting the oc mirror command"
       echo "--------------------------------"
       echo "$LASTTENLINE"
