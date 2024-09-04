@@ -23,3 +23,6 @@ The `monitor-ocmirror` script is designed to run the `oc-mirror` command and res
 
    # The maximum number of restarts
    MAXLOOP=20
+
+3. **Run the script**
+   ./monitor-ocmirror.sh
