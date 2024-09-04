@@ -27,4 +27,4 @@ The `monitor-ocmirror` script is designed to run the `oc-mirror` command and res
 3. **Run the script**
 
    ```bash
-  ./monitor-ocmirror.sh
+   ./monitor-ocmirror.sh
